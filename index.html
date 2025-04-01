@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hurra-Kollektion</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script defer src="js/script.js"></script>
+        <link rel="stylesheet" href="css/ts.css">
+        <link rel="stylesheet" href="css/drawer.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-container">
+                <div class="nav-left">
+                    <img src="logo.png" alt="" class="logo">
+                    <ul class="nav-links">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-home"></i> Startseite
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-info-circle"></i> Über uns
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-concierge-bell"></i> Dienstleistungen
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-envelope"></i> Kontakt
+                            </a>
+                        </li>
+                    </ul>
+                    <button class="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="nav-right">
+                    <div class="search-box">
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Suche..."
+                            onkeyup="showSuggestions()"
+                            onkeypress="handleEnter(event)"
+                            autocomplete="off"
+                        >
+                        <button onclick="performSearch()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div id="suggestions"></div>
+                    </div>
+                    <a href="#" class="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <a href="tel:+1234567890" class="call">
+                        <i class="fas fa-phone"></i>
+                        +123 456 7890
+                    </a>
+                </div>
+            </div>
+            <ul class="mobile-menu">
+                <li>
+                    <a href="#">Startseite</a>
+                </li>
+                <li>
+                    <a href="#">Über uns</a>
+                </li>
+                <li>
+                    <a href="#">Dienstleistungen</a>
+                </li>
+                <li>
+                    <a href="#">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-container">
+            <div class="overlay">
+                <div id="fadeText" class="fade-text">Kleidung?</div>
+                <div id="typingText" class="typing-text"></div>
+            </div>
+            <div class="carousel-container">
+                <button class="prev-btn">❮</button>
+                <div class="carousel">
+                    <div class="card">
+                        <img src="assets/top/dress.png" alt="Kleid">
+                        <div class="price">
+                            <h3>Kleid</h3>
+                            <p>Originalpreis:
+                                <span class="strikethrough">ksh500</span>
+                            </p>
+                            <p>Angebotspreis: ksh300</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="assets/top/casual-shirt.png" alt="Freizeithemd">
+                        <div class="price">
+                            <h3>Freizeithemd</h3>
+                            <p>Originalpreis:
+                                <span class="strikethrough">ksh1000</span>
+                            </p>
+                            <p>Angebotspreis: ksh500</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="assets/top/jacket.png" alt="Jacke">
+                        <div class="price">
+                            <h3>Jacke</h3>
+                            <p>Originalpreis:
+                                <span class="strikethrough">ksh100</span>
+                            </p>
+                            <p>Angebotspreis: ksh70</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="next-btn">❯</button>
+            </div>
+            <section class="hurra-collection">
+                <h2>Mehr aus der Hurra-Kollektion</h2>
+                <div class="collection-filters">
+                    <button class="filter-btn active" data-category="all">Alle</button>
+                    <button class="filter-btn" data-category="women">Damen</button>
+                    <button class="filter-btn" data-category="men">Herren</button>
+                    <button class="filter-btn" data-category="kids">Kinder</button>
+                </div>
+                <div class="collection-container"></div>
+                <div class="more-button-container">
+                    <button class="more-btn" onclick="window.location.href='more-collection.html'">Mehr dazu</button>
+                </div>
+            </section>
+            <div class="drawer-wrapper">
+                <div class="drawer-container">
+                    <div class="drawer-item">
+                        <img src="scarf.jpg" class="drawer-image" alt="Schal-Kollektion">
+                        <div class="drawer-text">Schal-Kollektion</div>
+                        <div class="arrow">→</div>
+                    </div>
+                    <div class="drawer-item">
+                        <img src="hoody.jpg" class="drawer-image" alt="Hoody-Kollektion">
+                        <div class="drawer-text">Hoody-Kollektion</div>
+                        <div class="arrow">→</div>
+                    </div>
+                </div>
+            </div>
+            <section class="trust-section">
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>100% Vertrauen & Glaubwürdigkeit</h3>
+                    <p>Wir gewährleisten Zuverlässigkeit, Authentizität und Transparenz bei jedem Kauf.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-star"></i>
+                    <h3>Premium-Produkte</h3>
+                    <p>Unsere Kollektion umfasst nur hochwertige, handverlesene Produkte.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-hands"></i>
+                    <h3>Unübertroffene Handwerkskunst</h3>
+                    <p>Jedes Produkt wird mit Präzision, Sorgfalt und Exzellenz gefertigt.</p>
+                </div>
+            </section>
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Unternehmenslogo">
+                    </div>
+                    <div class="footer-about">
+                        <h3>Über uns</h3>
+                        <p>Wir bieten hochwertige Mode mit einem Hauch von Eleganz. Unsere Mission ist es, erstklassige und erschwingliche Kleidung für jeden Stil anzubieten.</p>
+                    </div>
+                    <div class="footer-socials">
+                        <h3>Folge uns</h3>
+                        <div class="social-icons">
+                            <a href="https://facebook.com" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="script/search.js"></script>
+        <script src="script/script.js"></script>
+        <script src="script/clothing.js"></script>
+        <script src="script/listing.js"></script>
+        <script src="script/ttyptxt.js" type="text/javascript"></script>
+    </body>
+</html>

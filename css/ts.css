@@ -1,0 +1,48 @@
+body {
+    overflow-x: hidden; /* Fixed missing value */
+}
+
+/* Trust & Credibility Section */
+.trust-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 20px;
+    background: transparent; /* Removed dark background */
+    color: black; /* Changed text color to black for better readability */
+    text-align: center;
+}
+
+/* Individual Trust Items */
+.trust-item {
+    width: 300px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.05); /* Subtle light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+}
+
+.trust-item:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Icons */
+.trust-item i {
+    font-size: 40px;
+    color: #ffcc00; /* Golden touch for a premium feel */
+    margin-bottom: 10px;
+}
+
+/* Headings */
+.trust-item h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* Paragraph */
+.trust-item p {
+    font-size: 16px;
+    opacity: 0.8;
+}

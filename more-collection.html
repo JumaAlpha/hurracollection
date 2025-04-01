@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehr Kollektion</title>
+    <link rel="stylesheet" href="css/more.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>Entdecke mehr Kleidung</h1>
+        <a href="index.html" class="back-btn">⬅ Zurück zur Hauptseite</a>
+    </header>
+
+    <!-- Erweiterte Filter -->
+    <div class="advanced-filters">
+        <label for="priceRange">Preisspanne:</label>
+        <select id="priceRange">
+            <option value="all">Alle</option>
+            <option value="low">Unter 30 €</option>
+            <option value="mid">30 € - 50 €</option>
+            <option value="high">Über 50 €</option>
+        </select>
+
+        <label for="ratingFilter">Bewertung:</label>
+        <select id="ratingFilter">
+            <option value="all">Alle</option>
+            <option value="4">4 Sterne & mehr</option>
+            <option value="3">3 Sterne & mehr</option>
+        </select>
+    </div>
+
+    <!-- Mehr Kleidung -->
+    <div class="collection-container">
+        <!-- Kleidung wird dynamisch geladen -->
+    </div>
+
+    <script src="script/more-collection.js"></script>
+</body>
+</html>
