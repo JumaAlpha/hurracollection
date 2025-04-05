@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const typingTextElement = document.getElementById("typingText");
 
     if (!fadeTextElement || !typingTextElement) {
-        console.error("Fehler: Elemente nicht gefunden! Überprüfen Sie Ihre HTML-IDs.");
+        console.error("Error: Elements not found! Please check your HTML IDs.");
         return;
     }
 
     // Text collections
-    const fadeTexts = ["Kleidung?", "Schuhe?", "Accessoires?", "Trendige Mode?"];
-    const typingTexts = ["Wir sind Kleidung.", "Wir haben Schuhe.", "Wir verkaufen Accessoires.", "Wir bringen Trends."];
+    const fadeTexts = ["Clothing?", "Shoes?", "Accessories?", "Trendy Fashion?"];
+    const typingTexts = ["We are clothing.", "We have shoes.", "We sell accessories.", "We bring trends."];
 
     let fadeIndex = 0;
     let typingIndex = 0;

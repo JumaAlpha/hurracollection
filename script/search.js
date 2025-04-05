@@ -1,48 +1,48 @@
-const dados = [
-    { tipo: "produto", nome: "Vestido" },
-    { tipo: "produto", nome: "Camisa Casual" },
-    { tipo: "produto", nome: "Jaqueta" },
-    { tipo: "produto", nome: "Jeans" },
-    { tipo: "produto", nome: "Moletom" },
-    { tipo: "seção", nome: "Sobre Nós" },
-    { tipo: "seção", nome: "Contato" },
-    { tipo: "categoria", nome: "Masculino" },
-    { tipo: "categoria", nome: "Feminino" }
+const data = [
+    { type: "product", name: "Dress" },
+    { type: "product", name: "Casual Shirt" },
+    { type: "product", name: "Jacket" },
+    { type: "product", name: "Jeans" },
+    { type: "product", name: "Hoodie" },
+    { type: "section", name: "About Us" },
+    { type: "section", name: "Contact" },
+    { type: "category", name: "Men" },
+    { type: "category", name: "Women" }
 ];
 
-function handleEnter(evento) {
-    if (evento.key === "Enter") {
-        realizarPesquisa();
+function handleEnter(event) {
+    if (event.key === "Enter") {
+        performSearch();
     }
 }
 
-function mostrarSugestoes() {
-    let entrada = document.getElementById("searchInput").value.toLowerCase();
-    let sugestoesDiv = document.getElementById("suggestions");
+function showSuggestions() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let suggestionsDiv = document.getElementById("suggestions");
 
-    if (entrada === "") {
-        sugestoesDiv.innerHTML = "";
+    if (input === "") {
+        suggestionsDiv.innerHTML = "";
         return;
     }
 
-    let correspondencias = dados.filter(item => item.nome.toLowerCase().includes(entrada));
+    let matches = data.filter(item => item.name.toLowerCase().includes(input));
 
-    let sugestoesHTML = correspondencias.map(item => 
-        `<div onclick="selecionarSugestao('${item.nome}')">${item.nome}</div>`
+    let suggestionsHTML = matches.map(item => 
+        `<div onclick="selectSuggestion('${item.name}')">${item.name}</div>`
     ).join("");
 
-    sugestoesDiv.innerHTML = sugestoesHTML;
+    suggestionsDiv.innerHTML = suggestionsHTML;
 }
 
-function selecionarSugestao(valor) {
-    document.getElementById("searchInput").value = valor;
+function selectSuggestion(value) {
+    document.getElementById("searchInput").value = value;
     document.getElementById("suggestions").innerHTML = "";
-    realizarPesquisa();
+    performSearch();
 }
 
-function realizarPesquisa() {
-    let consulta = document.getElementById("searchInput").value;
-    if (consulta.trim() !== "") {
-        window.location.href = `../search-results.html?query=${encodeURIComponent(consulta)}`;
+function performSearch() {
+    let query = document.getElementById("searchInput").value;
+    if (query.trim() !== "") {
+        window.location.href = `../search-results.html?query=${encodeURIComponent(query)}`;
     }
 }

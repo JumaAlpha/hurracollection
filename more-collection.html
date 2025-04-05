@@ -4,11 +4,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mehr Kollektion</title>
-    <link rel="stylesheet" href="css/more.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        header {
+            background-color: #222;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+        }
+        
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .advanced-filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .advanced-filters label {
+            font-weight: 500;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+        
+        .advanced-filters select {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            background-color: white;
+            font-size: 14px;
+            margin-left: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .advanced-filters select:hover {
+            border-color: #999;
+        }
+        
+        .collection-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+        
+        .card:hover img {
+            opacity: 0.9;
+        }
+        
+        .card-content {
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .card h3 {
+            font-size: 16px;
+            margin: 0 0 5px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .card .price {
+            font-size: 16px;
+            color: #ff4500;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+        
+        .card .rating {
+            color: #ffc107;
+            font-size: 14px;
+            margin: 5px 0 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card .rating-count {
+            color: #777;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .card .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .card .actions button {
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #555;
+            padding: 5px;
+        }
+        
+        .card .actions button:hover {
+            color: #ff4500;
+            transform: scale(1.1);
+        }
+        
+        .card .like-btn.active {
+            color: #ff4500;
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .collection-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            header h1 {
+                font-size: 28px;
+                padding-right: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .collection-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            
+            .advanced-filters {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .advanced-filters label {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .advanced-filters select {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 5px;
+            }
+            
+            .card img {
+                height: 200px;
+            }
+            
+            header h1 {
+                font-size: 24px;
+            }
+            
+            .back-btn {
+                position: static;
+                transform: none;
+                margin-top: 15px;
+                justify-content: center;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <header>
         <h1>Entdecke mehr Kleidung</h1>
         <a href="index.html" class="back-btn">⬅ Zurück zur Hauptseite</a>
@@ -16,27 +253,164 @@
 
     <!-- Erweiterte Filter -->
     <div class="advanced-filters">
-        <label for="priceRange">Preisspanne:</label>
-        <select id="priceRange">
-            <option value="all">Alle</option>
-            <option value="low">Unter 30 €</option>
-            <option value="mid">30 € - 50 €</option>
-            <option value="high">Über 50 €</option>
-        </select>
+        <label for="priceRange">
+            Preisspanne:
+            <select id="priceRange">
+                <option value="all">Alle</option>
+                <option value="low">Unter 30 €</option>
+                <option value="mid">30 € - 50 €</option>
+                <option value="high">Über 50 €</option>
+            </select>
+        </label>
 
-        <label for="ratingFilter">Bewertung:</label>
-        <select id="ratingFilter">
-            <option value="all">Alle</option>
-            <option value="4">4 Sterne & mehr</option>
-            <option value="3">3 Sterne & mehr</option>
-        </select>
+        <label for="ratingFilter">
+            Bewertung:
+            <select id="ratingFilter">
+                <option value="all">Alle</option>
+                <option value="4">4 Sterne & mehr</option>
+                <option value="3">3 Sterne & mehr</option>
+            </select>
+        </label>
+        
+        <label for="categoryFilter">
+            Kategorie:
+            <select id="categoryFilter">
+                <option value="all">Alle</option>
+                <option value="women">Damen</option>
+                <option value="men">Herren</option>
+                <option value="kids">Kinder</option>
+            </select>
+        </label>
+        
+        <label for="sortBy">
+            Sortieren nach:
+            <select id="sortBy">
+                <option value="default">Standard</option>
+                <option value="price-asc">Preis (niedrig zu hoch)</option>
+                <option value="price-desc">Preis (hoch zu niedrig)</option>
+                <option value="rating">Beste Bewertung</option>
+            </select>
+        </label>
     </div>
 
     <!-- Mehr Kleidung -->
-    <div class="collection-container">
-        <!-- Kleidung wird dynamisch geladen -->
-    </div>
+    <div class="collection-container"></div>
 
-    <script src="script/more-collection.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const collectionContainer = document.querySelector(".collection-container");
+            const priceFilter = document.getElementById("priceRange");
+            const ratingFilter = document.getElementById("ratingFilter");
+            const categoryFilter = document.getElementById("categoryFilter");
+            const sortBy = document.getElementById("sortBy");
+
+            const clothingItems = [
+                { id: 1, category: "women", name: "Blumen Sommerkleid", price: 45.99, rating: 4, ratingCount: 128, img: "../assets/collection/ladies/floral-dress.png" },
+                { id: 2, category: "men", name: "Klassisches Hemd", price: 30.50, rating: 5, ratingCount: 89, img: "../assets/collection/men/casual-shirt.png" },
+                { id: 3, category: "kids", name: "Gemütliche Kinderkapuze", price: 25.00, rating: 4.5, ratingCount: 42, img: "../assets/collection/kids/kids-hoodie.png" },
+                { id: 4, category: "women", name: "Eleganter Midirock", price: 39.99, rating: 4.2, ratingCount: 76, img: "../assets/collection/ladies/elegant-skirt.png" },
+                { id: 5, category: "men", name: "Vintage Denimjacke", price: 49.95, rating: 4.8, ratingCount: 112, img: "../assets/collection/men/denim-jacket.png" },
+                { id: 6, category: "kids", name: "Buntes T-Shirt", price: 15.99, rating: 4.3, ratingCount: 37, img: "../assets/collection/kids/kids-tshirt.png" },
+                { id: 7, category: "women", name: "Büro Blazer", price: 59.99, rating: 4.7, ratingCount: 94, img: "../assets/collection/ladies/blazer.png" },
+                { id: 8, category: "men", name: "Slim Fit Jeans", price: 42.00, rating: 4.1, ratingCount: 67, img: "../assets/collection/men/jeans.png" },
+                { id: 9, category: "women", name: "Wollmantel", price: 89.99, rating: 4.9, ratingCount: 135, img: "../assets/collection/ladies/coat.png" },
+                { id: 10, category: "men", name: "Sportjacke", price: 65.50, rating: 4.4, ratingCount: 78, img: "../assets/collection/men/jacket.png" },
+                { id: 11, category: "kids", name: "Jogginghose", price: 22.95, rating: 4.0, ratingCount: 53, img: "../assets/collection/kids/pants.png" },
+                { id: 12, category: "women", name: "Jeansshorts", price: 35.00, rating: 3.8, ratingCount: 62, img: "../assets/collection/ladies/shorts.png" }
+            ];
+
+            function applyFiltersAndSort() {
+                const priceValue = priceFilter.value;
+                const ratingValue = parseFloat(ratingFilter.value) || 0;
+                const categoryValue = categoryFilter.value;
+                const sortValue = sortBy.value;
+                
+                // Filter items
+                let filteredItems = clothingItems.filter(item => {
+                    // Price filter
+                    let priceMatch = true;
+                    if (priceValue === "low") priceMatch = item.price < 30;
+                    else if (priceValue === "mid") priceMatch = item.price >= 30 && item.price <= 50;
+                    else if (priceValue === "high") priceMatch = item.price > 50;
+                    
+                    // Rating filter
+                    const ratingMatch = ratingValue === 0 || item.rating >= ratingValue;
+                    
+                    // Category filter
+                    const categoryMatch = categoryValue === "all" || item.category === categoryValue;
+                    
+                    return priceMatch && ratingMatch && categoryMatch;
+                });
+
+                // Sort items
+                switch(sortValue) {
+                    case "price-asc":
+                        filteredItems.sort((a, b) => a.price - b.price);
+                        break;
+                    case "price-desc":
+                        filteredItems.sort((a, b) => b.price - a.price);
+                        break;
+                    case "rating":
+                        filteredItems.sort((a, b) => b.rating - a.rating);
+                        break;
+                    default:
+                        // Default sorting (keep original order)
+                        break;
+                }
+
+                renderItems(filteredItems);
+            }
+
+            function renderItems(items) {
+                collectionContainer.innerHTML = "";
+
+                if (items.length === 0) {
+                    collectionContainer.innerHTML = `
+                        <p class="no-results">
+                            Keine Artikel gefunden, die Ihren Filtern entsprechen.
+                        </p>
+                    `;
+                    return;
+                }
+
+                items.forEach(item => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
+                    card.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}" loading="lazy">
+                        <div class="card-content">
+                            <h3>${item.name}</h3>
+                            <p class="price">${item.price.toFixed(2)} €</p>
+                            <div class="rating">
+                                ${"★".repeat(Math.round(item.rating))}${"☆".repeat(5 - Math.round(item.rating))}
+                                <span class="rating-count">(${item.ratingCount})</span>
+                            </div>
+                            <div class="actions">
+                                <button class="like-btn" aria-label="Zu Favoriten hinzufügen">♥</button>
+                                <button class="cart-btn" aria-label="In den Warenkorb legen">+</button>
+                            </div>
+                        </div>
+                    `;
+                    collectionContainer.appendChild(card);
+                });
+
+                // Add event listeners for the new buttons
+                document.querySelectorAll('.like-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                    });
+                });
+            }
+
+            // Event listeners for filters and sorting
+            priceFilter.addEventListener('change', applyFiltersAndSort);
+            ratingFilter.addEventListener('change', applyFiltersAndSort);
+            categoryFilter.addEventListener('change', applyFiltersAndSort);
+            sortBy.addEventListener('change', applyFiltersAndSort);
+
+            // Initial render
+            applyFiltersAndSort();
+        });
+    </script>
 </body>
 </html>

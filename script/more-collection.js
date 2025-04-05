@@ -1,55 +1,55 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const containerColecao = document.querySelector(".collection-container");
-    const filtroPreco = document.getElementById("priceRange");
-    const filtroAvaliacao = document.getElementById("ratingFilter");
+    const collectionContainer = document.querySelector(".collection-container");
+    const priceFilter = document.getElementById("priceRange");
+    const ratingFilter = document.getElementById("ratingFilter");
 
-    const roupas = [
-        { id: 1, categoria: "feminino", nome: "Vestido Floral", preco: 45, avaliacao: 4, img: "clothing1.jpg" },
-        { id: 2, categoria: "masculino", nome: "Camisa Casual", preco: 30, avaliacao: 5, img: "clothing2.jpg" },
-        { id: 3, categoria: "infantil", nome: "Moletom Infantil", preco: 25, avaliacao: 4.5, img: "clothing3.jpg" },
-        { id: 4, categoria: "feminino", nome: "Saia Elegante", preco: 40, avaliacao: 4.2, img: "clothing4.jpg" },
-        { id: 5, categoria: "masculino", nome: "Jaqueta Jeans", preco: 50, avaliacao: 4.8, img: "clothing5.jpg" },
-        { id: 6, categoria: "infantil", nome: "Camiseta Fofa", preco: 15, avaliacao: 4.3, img: "clothing6.jpg" },
-        { id: 7, categoria: "feminino", nome: "Vestido Vermelho", preco: 55, avaliacao: 5, img: "clothing7.jpg" },
-        { id: 8, categoria: "masculino", nome: "Casaco de Inverno", preco: 70, avaliacao: 4.6, img: "clothing8.jpg" },
+    const clothingItems = [
+        { id: 1, category: "women", name: "Floral Dress", price: 45, rating: 4, img: "clothing1.jpg" },
+        { id: 2, category: "men", name: "Casual Shirt", price: 30, rating: 5, img: "clothing2.jpg" },
+        { id: 3, category: "kids", name: "Kids Hoodie", price: 25, rating: 4.5, img: "clothing3.jpg" },
+        { id: 4, category: "women", name: "Elegant Skirt", price: 40, rating: 4.2, img: "clothing4.jpg" },
+        { id: 5, category: "men", name: "Denim Jacket", price: 50, rating: 4.8, img: "clothing5.jpg" },
+        { id: 6, category: "kids", name: "Cute T-shirt", price: 15, rating: 4.3, img: "clothing6.jpg" },
+        { id: 7, category: "women", name: "Red Dress", price: 55, rating: 5, img: "clothing7.jpg" },
+        { id: 8, category: "men", name: "Winter Coat", price: 70, rating: 4.6, img: "clothing8.jpg" },
     ];
 
-    function exibirRoupas() {
-        containerColecao.innerHTML = "";
+    function displayClothing() {
+        collectionContainer.innerHTML = "";
 
-        let roupasFiltradas = roupas.filter(item => {
-            // Filtro de Preço
-            if (filtroPreco.value === "baixo" && item.preco >= 30) return false;
-            if (filtroPreco.value === "medio" && (item.preco < 30 || item.preco > 50)) return false;
-            if (filtroPreco.value === "alto" && item.preco <= 50) return false;
+        let filteredItems = clothingItems.filter(item => {
+            // Price filter
+            if (priceFilter.value === "low" && item.price >= 30) return false;
+            if (priceFilter.value === "medium" && (item.price < 30 || item.price > 50)) return false;
+            if (priceFilter.value === "high" && item.price <= 50) return false;
 
-            // Filtro de Avaliação
-            if (filtroAvaliacao.value !== "todos" && item.avaliacao < parseFloat(filtroAvaliacao.value)) return false;
+            // Rating filter
+            if (ratingFilter.value !== "all" && item.rating < parseFloat(ratingFilter.value)) return false;
 
             return true;
         });
 
-        roupasFiltradas.forEach(item => {
+        filteredItems.forEach(item => {
             const card = document.createElement("div");
             card.classList.add("card");
             card.innerHTML = `
-                <img src="${item.img}" alt="${item.nome}">
-                <h3>${item.nome}</h3>
-                <p class="price">R$${item.preco}</p>
-                <p class="rating">${"★".repeat(Math.round(item.avaliacao))}</p>
+                <img src="${item.img}" alt="${item.name}">
+                <h3>${item.name}</h3>
+                <p class="price">$${item.price}</p>
+                <p class="rating">${"★".repeat(Math.round(item.rating))}</p>
                 <div class="actions">
                     <button class="like-btn">❤️</button>
                     <button class="cart-btn">🛒</button>
                 </div>
             `;
-            containerColecao.appendChild(card);
+            collectionContainer.appendChild(card);
         });
     }
 
-    // Aplicar filtros quando a seleção mudar
-    filtroPreco.addEventListener("change", exibirRoupas);
-    filtroAvaliacao.addEventListener("change", exibirRoupas);
+    // Apply filters when selection changes
+    priceFilter.addEventListener("change", displayClothing);
+    ratingFilter.addEventListener("change", displayClothing);
 
-    // Carregar todas as roupas ao carregar a página
-    exibirRoupas();
+    // Load all clothing items on page load
+    displayClothing();
 });

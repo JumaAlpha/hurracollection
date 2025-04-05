@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             `<p><strong>${item.type}:</strong> ${item.name}</p>`
         ).join("");
     } else {
-        resultsDiv.innerHTML = "<p>Keine Ergebnisse gefunden.</p>";
+        resultsDiv.innerHTML = "<p>No results found.</p>";
     }
 });
 

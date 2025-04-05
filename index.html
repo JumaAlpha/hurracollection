@@ -1,182 +1,253 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hurra-Kollektion</title>
+        <title>Hurra Collection</title>
         <link rel="stylesheet" href="css/style.css">
         <script defer src="js/script.js"></script>
         <link rel="stylesheet" href="css/ts.css">
         <link rel="stylesheet" href="css/drawer.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    hamburger.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+    });
+    
+    // Mobile dropdown toggle
+    const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+    mobileDropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function(e) {
+            e.preventDefault();
+            this.classList.toggle('active');
+        });
+    });
+    
+    // Search toggle
+    const searchToggle = document.getElementById('searchToggle');
+    const searchBox = document.getElementById('searchBox');
+    
+    searchToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchBox.style.display = searchBox.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Close search when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchToggle.contains(e.target) && !searchBox.contains(e.target)) {
+            searchBox.style.display = 'none';
+        }
+    });
+});
+        </script>
     </head>
     <body>
         <nav>
             <div class="nav-container">
                 <div class="nav-left">
-                    <img src="logo.png" alt="" class="logo">
+                    <img src="logo.png" alt="Company Logo" class="logo">
+                </div>
+                <div class="nav-right">
                     <ul class="nav-links">
                         <li>
                             <a href="#">
-                                <i class="fa fa-home"></i> Startseite
+                                <i class="fas fa-home"></i>
+                                Home
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-info-circle"></i> Über uns
+                                <i class="fas fa-store"></i>
+                                Shop
                             </a>
                         </li>
-                        <li>
+                        <li class="dropdown">
                             <a href="#">
-                                <i class="fa fa-concierge-bell"></i> Dienstleistungen
+                                <i class="fas fa-list-ul"></i>
+                                Product Categories
+                                <i class="fas fa-chevron-down"></i>
                             </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-envelope"></i> Kontakt
-                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Category 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Category 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Category 3</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                     <button class="hamburger">
                         <i class="fas fa-bars"></i>
                     </button>
-                </div>
-                <div class="nav-right">
-                    <div class="search-box">
-                        <input
-                            type="text"
-                            id="searchInput"
-                            placeholder="Suche..."
-                            onkeyup="showSuggestions()"
-                            onkeypress="handleEnter(event)"
-                            autocomplete="off"
-                        >
-                        <button onclick="performSearch()">
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <div id="suggestions"></div>
+                    <div class="search-icon">
+                        <i class="fas fa-search" id="searchToggle"></i>
+                        <div class="search-box" id="searchBox">
+                            <input type="text" placeholder="Search products...">
+                            <button>
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
-                    <a href="#" class="cart">
-                        <i class="fas fa-shopping-cart"></i>
+                    <a href="#" class="profile-icon">
+                        <i class="fas fa-user"></i>
                     </a>
-                    <a href="tel:+1234567890" class="call">
-                        <i class="fas fa-phone"></i>
-                        +123 456 7890
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
                     </a>
                 </div>
             </div>
             <ul class="mobile-menu">
                 <li>
-                    <a href="#">Startseite</a>
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Über uns</a>
+                    <a href="#">
+                        <i class="fas fa-store"></i>
+                        Shop
+                    </a>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#">
+                        <i class="fas fa-list-ul"></i>
+                        Product Categories
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="mobile-dropdown-menu">
+                        <li>
+                            <a href="#">Category 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Category 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Category 3</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="#">Dienstleistungen</a>
-                </li>
-                <li>
-                    <a href="#">Kontakt</a>
+                    <a href="#">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </a>
                 </li>
             </ul>
         </nav>
         <div class="main-container">
             <div class="overlay">
-                <div id="fadeText" class="fade-text">Kleidung?</div>
+                <div id="fadeText" class="fade-text" style="opacity: 1; font-weight: 1000; transition: 1s ease-in-out; font-size: 25px;">Trendy Fashion?</div>
                 <div id="typingText" class="typing-text"></div>
             </div>
             <div class="carousel-container">
                 <button class="prev-btn">❮</button>
                 <div class="carousel">
                     <div class="card">
-                        <img src="assets/top/dress.png" alt="Kleid">
+                        <img src="assets/top/dress.png" alt="Dress">
                         <div class="price">
-                            <h3>Kleid</h3>
-                            <p>Originalpreis:
+                            <h3>Dress</h3>
+                            <p>
+                                Original Price:
                                 <span class="strikethrough">ksh500</span>
                             </p>
-                            <p>Angebotspreis: ksh300</p>
+                            <p>Sale Price: ksh300</p>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/top/casual-shirt.png" alt="Freizeithemd">
+                        <img src="assets/top/casual-shirt.png" alt="Casual Shirt">
                         <div class="price">
-                            <h3>Freizeithemd</h3>
-                            <p>Originalpreis:
+                            <h3>Casual Shirt</h3>
+                            <p>
+                                Original Price:
                                 <span class="strikethrough">ksh1000</span>
                             </p>
-                            <p>Angebotspreis: ksh500</p>
+                            <p>Sale Price: ksh500</p>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/top/jacket.png" alt="Jacke">
+                        <img src="assets/top/jacket.png" alt="Jacket">
                         <div class="price">
-                            <h3>Jacke</h3>
-                            <p>Originalpreis:
+                            <h3>Jacket</h3>
+                            <p>
+                                Original Price:
                                 <span class="strikethrough">ksh100</span>
                             </p>
-                            <p>Angebotspreis: ksh70</p>
+                            <p>Sale Price: ksh70</p>
                         </div>
                     </div>
                 </div>
                 <button class="next-btn">❯</button>
             </div>
             <section class="hurra-collection">
-                <h2>Mehr aus der Hurra-Kollektion</h2>
+                <h2>More from the Hurra Collection</h2>
                 <div class="collection-filters">
-                    <button class="filter-btn active" data-category="all">Alle</button>
-                    <button class="filter-btn" data-category="women">Damen</button>
-                    <button class="filter-btn" data-category="men">Herren</button>
-                    <button class="filter-btn" data-category="kids">Kinder</button>
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="women">Women</button>
+                    <button class="filter-btn" data-category="men">Men</button>
+                    <button class="filter-btn" data-category="kids">Kids</button>
                 </div>
                 <div class="collection-container"></div>
                 <div class="more-button-container">
-                    <button class="more-btn" onclick="window.location.href='more-collection.html'">Mehr dazu</button>
+                    <button class="more-btn" onclick="window.location.href='more-collection.html'">View Full Collection</button>
                 </div>
             </section>
             <div class="drawer-wrapper">
                 <div class="drawer-container">
                     <div class="drawer-item">
-                        <img src="scarf.jpg" class="drawer-image" alt="Schal-Kollektion">
-                        <div class="drawer-text">Schal-Kollektion</div>
-                        <div class="arrow">→</div>
+                        <img src="assets/scarf.jpg" class="drawer-image" alt="Scarf Collection">
+                        <div class="drawer-text">Scarf Collection
+                            <div class="arrow">→</div>
+                        </div>
                     </div>
                     <div class="drawer-item">
-                        <img src="hoody.jpg" class="drawer-image" alt="Hoody-Kollektion">
-                        <div class="drawer-text">Hoody-Kollektion</div>
-                        <div class="arrow">→</div>
+                        <img src="assets/hoody.png" class="drawer-image" alt="Hoody Collection">
+                        <div class="drawer-text">
+                            Hoody Collection
+                            <div class="arrow">→</div>
+                        </div>
                     </div>
                 </div>
             </div>
             <section class="trust-section">
                 <div class="trust-item">
                     <i class="fas fa-shield-alt"></i>
-                    <h3>100% Vertrauen & Glaubwürdigkeit</h3>
-                    <p>Wir gewährleisten Zuverlässigkeit, Authentizität und Transparenz bei jedem Kauf.</p>
+                    <h3>100% Trust & Credibility</h3>
+                    <p>We guarantee reliability, authenticity, and transparency with every purchase.</p>
                 </div>
                 <div class="trust-item">
                     <i class="fas fa-star"></i>
-                    <h3>Premium-Produkte</h3>
-                    <p>Unsere Kollektion umfasst nur hochwertige, handverlesene Produkte.</p>
+                    <h3>Premium Products</h3>
+                    <p>Our collection includes only high-quality, hand-picked products.</p>
                 </div>
                 <div class="trust-item">
                     <i class="fas fa-hands"></i>
-                    <h3>Unübertroffene Handwerkskunst</h3>
-                    <p>Jedes Produkt wird mit Präzision, Sorgfalt und Exzellenz gefertigt.</p>
+                    <h3>Unmatched Craftsmanship</h3>
+                    <p>Each product is made with precision, care, and excellence.</p>
                 </div>
             </section>
             <footer class="footer">
                 <div class="footer-container">
                     <div class="footer-logo">
-                        <img src="logo.png" alt="Unternehmenslogo">
+                        <img src="logo.png" alt="Company Logo">
                     </div>
                     <div class="footer-about">
-                        <h3>Über uns</h3>
-                        <p>Wir bieten hochwertige Mode mit einem Hauch von Eleganz. Unsere Mission ist es, erstklassige und erschwingliche Kleidung für jeden Stil anzubieten.</p>
+                        <h3>About Us</h3>
+                        <p>We offer high-quality fashion with a touch of elegance. Our mission is to provide top-notch and affordable clothing for every style.</p>
                     </div>
                     <div class="footer-socials">
-                        <h3>Folge uns</h3>
+                        <h3>Follow Us</h3>
                         <div class="social-icons">
                             <a href="https://facebook.com" target="_blank">
                                 <i class="fab fa-facebook"></i>

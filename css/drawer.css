@@ -7,7 +7,8 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: rgba(20, 20, 20, 0.9); /* Dark background */
+    background: rgba(20, 20, 20, 0.9);
+    /* Dark background */
 }
 
 /* Background Layer with Blur */
@@ -20,7 +21,8 @@
     height: 100%;
     background: url('drawer-bg.jpg') center/cover no-repeat;
     filter: blur(10px);
-    opacity: 0.4; /* Reduce brightness to blend with dark background */
+    opacity: 0.4;
+    /* Reduce brightness to blend with dark background */
     z-index: -1;
 }
 
@@ -51,17 +53,21 @@
 
 /* Collection Images */
 .drawer-image {
-    width: 150px;
+    position: absolute;
+    width: 90%;
     height: auto;
     border-radius: 10px;
 }
 
 /* Collection Text */
 .drawer-text {
-    margin-top: 10px;
-    font-size: 18px;
+    margin-top: 1px;
+    font-size: 24px;
+    width: 82%;
     font-weight: bold;
-    color: white; /* Ensure text is readable on dark background */
+    background: rgb(218, 4, 4);
+    z-index: 9;
+    color: yellow;
 }
 
 /* Arrow Button */
@@ -70,7 +76,7 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background: red;
+    background: rgb(218, 4, 4);
     color: white;
     padding: 10px;
     border-radius: 50%;
@@ -88,8 +94,7 @@
 }
 
 @media (max-width: 768px) {
-    .drawer-wrapper{
+    .drawer-wrapper {
         width: 100%;
     }
 }
-
